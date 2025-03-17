@@ -35,7 +35,7 @@ OPENAI_API_KEY=your_actual_openai_api_key
 PERPLEXITY_API_KEY=your_actual_perplexity_api_key
 ```
 
-## Running the Server
+## Running the FastAPI Server
 
 To run the development server:
 
@@ -51,12 +51,27 @@ python main.py
 
 The server will be available at http://localhost:8000.
 
-## API Endpoints
+## Running the Flask Server (Alternative)
+
+We also provide a simpler Flask server implementation:
+
+```bash
+python app.py
+```
+
+The Flask server will be available at http://0.0.0.0:5000.
+
+## API Endpoints (FastAPI)
 
 - `GET /`: Health check endpoint
 - `POST /nutrition-recommendation`: Submit patient information and receive nutrition recommendations from ChatGPT and Perplexity.
 
-## API Documentation
+## API Endpoints (Flask)
+
+- `GET /health`: Health check endpoint
+- `POST /api/query`: Submit patient information and receive nutrition recommendations from ChatGPT and Perplexity simultaneously.
+
+## API Documentation (FastAPI)
 
 When the server is running, you can access the automatic API documentation at:
 - http://localhost:8000/docs (Swagger UI)
