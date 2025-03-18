@@ -63,21 +63,12 @@ export const usePatientStore = create<PatientState>()(
           const patientInfo = get().patientInfo;
           
           // Call the backend API with patient information
-          const response = await fetch('http://18.118.93.180:8000/api/query', {
+          const response = await fetch('http://18.118.93.180:8000/nutrition-recommendation', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-              age: patientInfo.age,
-              weight: patientInfo.weight,
-              height: patientInfo.height,
-              gender: patientInfo.gender,
-              zipcode: 'N/A', // Not collected in the form
-              conditions: patientInfo.medicalConditions.join(', '),
-              hba1c: patientInfo.diabetesDetails?.a1c || 'N/A',
-              medications: 'N/A' // Not collected in the form
-            }),
+            body: JSON.stringify({ patientInfo }),
           });
           
           if (!response.ok) {
