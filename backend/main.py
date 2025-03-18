@@ -116,15 +116,14 @@ async def call_chatgpt(prompt: str) -> str:
         }
         
         payload = {
-            "model": "gpt-4-turbo",
+            "model": "gpt-4o-search-preview",
             "messages": [
                 {"role": "system", "content": "You are a nutritionist expert who provides detailed nutrition advice based on patient profiles and medical conditions."},
                 {"role": "user", "content": prompt}
             ],
-            "temperature": 0.7,
             "max_tokens": 2000
         }
-        
+        print(prompt)
         async with httpx.AsyncClient() as client:
             response = await client.post(
                 "https://api.openai.com/v1/chat/completions",
@@ -156,7 +155,7 @@ async def call_perplexity(prompt: str) -> str:
         }
         
         payload = {
-            "model": "pplx-70b-online",  # Or another appropriate Perplexity model
+            "model": "sonar-pro",  # Or another appropriate Perplexity model
             "messages": [
                 {"role": "system", "content": "You are a nutritionist expert who provides detailed nutrition advice based on patient profiles and medical conditions."},
                 {"role": "user", "content": prompt}
